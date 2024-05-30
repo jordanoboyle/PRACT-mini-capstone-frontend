@@ -41,6 +41,7 @@ function ProductsIndex() {
           Good game with some much needed patching. This is a late review but, still truthful to this day. 
           Now go get them Covenant.
         </p>
+        <p>Price: $30.00</p>
         
       </div>
 

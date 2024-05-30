@@ -2,6 +2,19 @@
   width: 300px;
 }
 
+#products-index img {
+  width: 280px;
+  height: 300px;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+header {
+  background-color: greenyellow;
+}
+
+footer {
+  background-color: greenyellow;
 }
