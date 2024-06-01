@@ -1,11 +1,12 @@
 
-export function ProductShow() {
+
+export function ProductShow(props) {
   return (
     <div>
-      <h1>Further Product Info:</h1>
-      <p>Supplier: </p>
-      <p>Number Remaining: </p>
-      <p>Price: </p>
+      <h1><b>Further Product Info:</b></h1>
+      <p>Supplier: {props.product.supplier.name}</p>
+      <p>Number Remaining: {props.product.inventory} </p>
+      <p>Price:{props.product.price} </p>
     </div>
   )
 }

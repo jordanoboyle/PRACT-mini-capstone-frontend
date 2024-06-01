@@ -1,5 +1,6 @@
 import { ProductsIndex } from "./ProductsIndex";
 import { ProductsNew } from "./ProductsNew";
+import { ProductShow } from "./ProductShow";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal } from "./Modal";
@@ -36,6 +37,7 @@ export function Content() {
       <ProductsIndex  products={products} onShowProduct={handleShowProduct}/>
       <Modal show={isProductShowVisible} onClose={handleClose}>
         <h1>THE MODAL</h1>
+        <ProductShow product={currentProduct}/>
       </Modal>
     </main>
   );
