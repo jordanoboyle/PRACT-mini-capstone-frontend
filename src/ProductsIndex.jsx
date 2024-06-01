@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export function ProductsIndex() {
   return (
     <div id="products-index">
