@@ -10,7 +10,6 @@ export function ProductsIndex(props) {
             <p>ID: {product.id}</p>
             <p>Product Name: {product.name}</p>
             <img src={product.images[0].url} />
-            <p>Price: {product.price}</p>
             <p>Description: {product.description}</p>
             <button onClick={() => props.onShowProduct(product)}> Further Information</button>
           </div>
