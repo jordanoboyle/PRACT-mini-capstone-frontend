@@ -18,3 +18,14 @@ header {
 footer {
   background-color: greenyellow;
 }
+
+.cardProducts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 50px;
+}
+
+#BRB {
+  color: white;
+  background-color: red;
+}
