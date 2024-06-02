@@ -30,9 +30,19 @@ export function Content() {
     setIsProductShowVisible(false);
   }
 
+  const handleCreateProduct = (theParams) => {
+    console.log("handling create", theParams);
+    axios.post("http://localhost:3000/products.json", theParams). then((response) => {
+      console.log(response.data)
+      setProducts([...products, response.data]);
+    })
+
+  }
+
   return (
     <main>
-      <ProductsNew />
+      <ProductsNew onCreateProduct={handleCreateProduct}/>
+      <br></br>
       <button id="BRB" onClick={handleIndexProducts}>BIG RED BUTTON </button>
       <ProductsIndex  products={products} onShowProduct={handleShowProduct}/>
       <Modal show={isProductShowVisible} onClose={handleClose}>
