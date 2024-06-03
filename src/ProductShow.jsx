@@ -9,11 +9,9 @@ export function ProductShow(props) {
     console.log("sending update", event)
   }
 
-  const deleteProduct = () => {
+  const handleDeleteProduct = () => {
     console.log("deleting the recipe");
-    axios.delete(`http://localhost:3000/products/${props.product.id}.json`).then(response => {
-      console.log(response.data)
-    })
+    props.onDestroyProduct(props.product.id);
   }
   
   return (
@@ -48,7 +46,7 @@ export function ProductShow(props) {
       <br />
       <br />
       <br />
-      <button onClick={deleteProduct}>Remove Product</button>
+      <button onClick={handleDeleteProduct}>Remove Product</button>
     </div>
   )
 }

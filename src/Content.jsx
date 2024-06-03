@@ -12,7 +12,7 @@ export function Content() {
   const [currentProduct, setCurrentProduct] = useState({});
 
   const handleIndexProducts = () => {
-    console.log("handling the photos!");
+    console.log("handling the products!");
     axios.get("http://localhost:3000/products.json").then((response) => {
       console.log(response.data);
       setProducts(response.data);
@@ -56,17 +56,24 @@ export function Content() {
       handleClose()
     })
   }
+
+  const handleDestroyProduct = (theParams) => {
+    console.log("handle destroying product")
+    axios.delete(`http://localhost:3000/products/${theParams}.json`).then(response => {
+      console.log(response.data)
+    })
+  }
   useEffect(handleIndexProducts, []);
 
   return (
     <main>
       <ProductsNew onCreateProduct={handleCreateProduct}/>
       <br></br>
-      <button id="BRB" onClick={handleIndexProducts}>BIG RED BUTTON </button>
+      <button id="BRB">BIG RED BUTTON </button>
       <ProductsIndex  products={products} onShowProduct={handleShowProduct}/>
       <Modal show={isProductShowVisible} onClose={handleClose}>
         <h1>THE MODAL</h1>
-        <ProductShow product={currentProduct} onUpdateProduct={handleUpdateProduct}/>
+        <ProductShow product={currentProduct} onUpdateProduct={handleUpdateProduct} onDestroyProduct={handleDestroyProduct}/>
       </Modal>
     </main>
   );
