@@ -61,7 +61,12 @@ export function Content() {
     console.log("handle destroying product")
     axios.delete(`http://localhost:3000/products/${theParams}.json`).then(response => {
       console.log(response.data)
+
+      setProducts(products.filter((product) => product.id !== theParams))
+
+    handleClose()
     })
+
   }
   useEffect(handleIndexProducts, []);
 
