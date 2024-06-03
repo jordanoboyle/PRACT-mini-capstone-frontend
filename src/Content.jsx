@@ -57,12 +57,12 @@ export function Content() {
     })
   }
 
-  const handleDestroyProduct = (theParams) => {
+  const handleDestroyProduct = (id) => {
     console.log("handle destroying product")
-    axios.delete(`http://localhost:3000/products/${theParams}.json`).then(response => {
+    axios.delete(`http://localhost:3000/products/${id}.json`).then(response => {
       console.log(response.data)
 
-      setProducts(products.filter((product) => product.id !== theParams))
+      setProducts(products.filter((product) => product.id !== id))
 
     handleClose()
     })
