@@ -18,8 +18,7 @@ export function Content() {
       setProducts(response.data);
     });
   }
-  useEffect(handleIndexProducts, []);
-
+  
   const handleShowProduct = (myProduct) => {
     console.log("handling the product", myProduct);
     setIsProductShowVisible(true);
@@ -29,15 +28,18 @@ export function Content() {
     console.log("closing the modal");
     setIsProductShowVisible(false);
   }
-
-  const handleCreateProduct = (theParams) => {
+  
+  const handleCreateProduct = (theParams, successCallback) => {
     console.log("handling create", theParams);
     axios.post("http://localhost:3000/products.json", theParams). then((response) => {
       console.log(response.data)
       setProducts([...products, response.data]);
-    })
+      successCallback();
 
+    })
+    
   }
+  useEffect(handleIndexProducts, []);
 
   return (
     <main>

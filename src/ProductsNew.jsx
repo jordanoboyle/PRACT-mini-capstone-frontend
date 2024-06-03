@@ -20,6 +20,9 @@ export function ProductsNew(props) {
           Product Price: <input name="price" type="integer" />  {/*ask Brian about this*/}
         </div>
         <div>
+          Inventory Product: <input name="inventory" type="integer" />
+        </div>
+        <div>
           Supplier ID (must be 1-4): <input name="supplier_id" type="text" />
         </div>
         <button type="submit">ADD NEW PRODUCT</button>
