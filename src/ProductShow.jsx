@@ -2,6 +2,13 @@ import axios from "axios"
 
 export function ProductShow(props) {
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const params = new FormData(event.target);
+    props.onUpdateProduct(props.product.id, params, () => event.target.reset())  
+    console.log("sending update", event)
+  }
+
   const deleteProduct = () => {
     console.log("deleting the recipe");
     axios.delete(`http://localhost:3000/products/${props.product.id}.json`).then(response => {
@@ -17,10 +24,12 @@ export function ProductShow(props) {
       <p>Price:{props.product.price} </p>
       <p>Number Remaining: {props.product.inventory} </p>
       <p>Supplier(must be 1-4): {props.product.supplier.name}</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>UPDATE PRODUCT INFORMATION BELOW</div>
+        <br />
         <div>
-          Name: <input type="text" name="name" defaultValue={props.product.name} />
+          <label htmlFor="name">Name:</label>
+          <input type="text" name="name" defaultValue={props.product.name} />
         </div>
         <div>
           Description: <input type="text" name="description" defaultValue={props.product.description} />
@@ -34,6 +43,7 @@ export function ProductShow(props) {
         <div>
           Supplier: <input type="text" name="supplier_id" defaultValue={props.product.supplier_id} />
         </div>
+        <button type="submit">Update Production Information</button>
       </form>
       <br />
       <br />
