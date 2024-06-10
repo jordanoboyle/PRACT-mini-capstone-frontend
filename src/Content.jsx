@@ -1,6 +1,7 @@
 import { ProductsIndex } from "./ProductsIndex";
 import { ProductsNew } from "./ProductsNew";
 import { ProductShow } from "./ProductShow";
+import { Signup } from "./Signup";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal } from "./Modal";
@@ -72,6 +73,9 @@ export function Content() {
 
   return (
     <main>
+      <Signup />
+      <br></br>
+      <br></br>
       <ProductsNew onCreateProduct={handleCreateProduct}/>
       <br></br>
       <button id="BRB">BIG RED BUTTON </button>
