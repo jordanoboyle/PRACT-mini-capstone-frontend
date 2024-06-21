@@ -17,24 +17,29 @@ export function ProductShow(props) {
   const cartProduct = (event) => {
     event.preventDefault()
     console.log("carting the product");
-    axios.post("http://localhost:3000/carted_products.json", {quantity: 2, product_id: 6}).then((response) => {
+    const params = new FormData(event.target);
+    axios.post("http://localhost:3000/carted_products.json", params).then((response) => {
       console.log(response.data);
     })
+    window.location.href = "/"
   }
   
   return (
     <div>
       <h1><b>Further Product Info:</b></h1>
+      <p>{props.product.id}</p>
       <p>Name: {props.product.name}</p>
       <p>Description: {props.product.description}</p>
       <p>Price:{props.product.price} </p>
       <p>Number Remaining: {props.product.inventory} </p>
       <p>Supplier: {props.product.supplier.name}</p>
       <hr/>
-      <form>
-        <input type="text" name="quantity" />
-        <input type="hidden" name="product_id" defaultValue={props.product.id} />
-        <button onClick={cartProduct}>Submit product to cart</button>
+      <form onSubmit={cartProduct}>
+        <div>
+          <p>Quantity Desired: <input type="text" name="quantity" /></p>
+          <p> <input type="hidden" name="product_id" defaultValue={props.product.id} /> </p>
+        </div>
+        <button type="submit">Submit product to cart</button>
       </form>
       <hr/>
       <form onSubmit={handleSubmit}>
