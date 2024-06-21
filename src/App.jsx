@@ -1,13 +1,17 @@
 import { Content } from "./Content";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { BrowserRouter } from "react-router-dom";
+
 
 function App() {
   return (
     <div>
-      <Header />
-      <Content />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Content />
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

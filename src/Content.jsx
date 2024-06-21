@@ -7,6 +7,7 @@ import { LogoutLink } from "./LogoutLink";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal } from "./Modal";
+import { Route, Routes } from "react-router-dom";
 
 export function Content() {
 
@@ -75,15 +76,19 @@ export function Content() {
 
   return (
     <main>
-      <Login />
+      <div>
+        <a href="/login">Login</a> | <a href="/signup">Not member? Sign-Up Here</a>
+        <br/>
+        <a>User Cart</a>
+      </div>
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/createNew_product" element={<ProductsNew onCreateProduct={handleCreateProduct}/>} />
+        <Route path="/" element={<ProductsIndex  products={products} onShowProduct={handleShowProduct}/>} />
+      </Routes>
       <LogoutLink />
-      <br></br>
-      <Signup />
-      <br></br>
-      <ProductsNew onCreateProduct={handleCreateProduct}/>
-      <br></br>
       <button id="BRB">BIG RED BUTTON </button>
-      <ProductsIndex  products={products} onShowProduct={handleShowProduct}/>
       <Modal show={isProductShowVisible} onClose={handleClose}>
         <h1>THE MODAL</h1>
         <ProductShow product={currentProduct} onUpdateProduct={handleUpdateProduct} onDestroyProduct={handleDestroyProduct}/>

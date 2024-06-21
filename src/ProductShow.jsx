@@ -13,6 +13,10 @@ export function ProductShow(props) {
     console.log("deleting the recipe");
     props.onDestroyProduct(props.product.id);
   }
+
+  const cartProduct = () => {
+    console.log("carting the product")
+  }
   
   return (
     <div>
@@ -21,7 +25,10 @@ export function ProductShow(props) {
       <p>Description: {props.product.description}</p>
       <p>Price:{props.product.price} </p>
       <p>Number Remaining: {props.product.inventory} </p>
-      <p>Supplier(must be 1-4): {props.product.supplier.name}</p>
+      <p>Supplier: {props.product.supplier.name}</p>
+      <hr/>
+      <button onClick={cartProduct}>Submit product to cart</button>
+      <hr/>
       <form onSubmit={handleSubmit}>
         <div>UPDATE PRODUCT INFORMATION BELOW</div>
         <br />
@@ -39,7 +46,7 @@ export function ProductShow(props) {
           Inventory: <input type="text" name="inventory" defaultValue={props.product.inventory} />
         </div>
         <div>
-          Supplier: <input type="text" name="supplier_id" defaultValue={props.product.supplier_id} />
+          Supplier(must be 1-3): <input type="text" name="supplier_id" defaultValue={props.product.supplier_id} />
         </div>
         <button type="submit">Update Production Information</button>
       </form>
