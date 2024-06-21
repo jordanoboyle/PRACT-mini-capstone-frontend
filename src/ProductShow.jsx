@@ -14,8 +14,12 @@ export function ProductShow(props) {
     props.onDestroyProduct(props.product.id);
   }
 
-  const cartProduct = () => {
-    console.log("carting the product")
+  const cartProduct = (event) => {
+    event.preventDefault()
+    console.log("carting the product");
+    axios.post("http://localhost:3000/carted_products.json", {quantity: 2, product_id: 6}).then((response) => {
+      console.log(response.data);
+    })
   }
   
   return (
@@ -27,7 +31,11 @@ export function ProductShow(props) {
       <p>Number Remaining: {props.product.inventory} </p>
       <p>Supplier: {props.product.supplier.name}</p>
       <hr/>
-      <button onClick={cartProduct}>Submit product to cart</button>
+      <form>
+        <input type="text" name="quantity" />
+        <input type="hidden" name="product_id" defaultValue={props.product.id} />
+        <button onClick={cartProduct}>Submit product to cart</button>
+      </form>
       <hr/>
       <form onSubmit={handleSubmit}>
         <div>UPDATE PRODUCT INFORMATION BELOW</div>
