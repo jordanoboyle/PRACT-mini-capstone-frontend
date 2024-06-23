@@ -32,8 +32,15 @@ footer {
 
 /* Show Product Modal */
 .showProductCardImage {
-  width: 10%;
-  height: 10%;
+  position: right;
+  float: right;
+  border: 5px solid coral;
+  width: 225px;
+  height: 225px;
+  margin-right: 100px;
+  margin-top: -50px;
+
+
 }
 
 .updateProductCard {
@@ -49,7 +56,7 @@ footer {
   line-height: 0%;
 }
 
-.showProductInfo,
-p {
-  margin-top: -2%;
+.showProductInfo p {
+  margin-top: -1%;
+
 }
