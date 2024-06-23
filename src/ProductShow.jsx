@@ -23,16 +23,22 @@ export function ProductShow(props) {
     })
     window.location.href = "/"
   }
-  
   return (
     <div>
-      <h1><b>Further Product Info:</b></h1>
+      <h1 ><b>Further Product Info:</b></h1>
       <p>{props.product.id}</p>
+      <img className="showProductCardImage" src={props.product.images[1].url} />
       <p>Name: {props.product.name}</p>
       <p>Description: {props.product.description}</p>
       <p>Price:{props.product.price} </p>
       <p>Number Remaining: {props.product.inventory} </p>
       <p>Supplier: {props.product.supplier.name}</p>
+      <h1>Tags</h1>
+        {props.product.categories.map(category => (
+          <div> 
+            <p>{category.name}</p>
+          </div>
+        ))}
       <hr/>
       <form onSubmit={cartProduct}>
         <div>

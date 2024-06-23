@@ -29,3 +29,8 @@ footer {
   color: white;
   background-color: red;
 }
+
+.showProductCardImage {
+  width: 10%;
+  height: 10%;
+}
