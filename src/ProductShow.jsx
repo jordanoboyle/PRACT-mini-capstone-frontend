@@ -78,16 +78,6 @@ export function ProductShow(props) {
       <hr/>
       <button onClick={ShowUpdateForm}>Click</button>
       < ShowUpdateForm/>
-      {/* <form onSubmit={handleSubmit} className="updateProductCard">
-        <div>UPDATE PRODUCT INFORMATION BELOW</div>
-        <br />
-          <p id="updateForm1">Product Name: <input type="text" name="name" defaultValue={props.product.name} /></p>
-          <p id="updateForm1">Description: <input type="text" name="description" defaultValue={props.product.description} /></p>
-          <p id="updateForm1">Price: <input type="text" name="price" defaultValue={props.product.price} /></p>
-          <p id="updateForm1">Inventory: <input type="text" name="inventory" defaultValue={props.product.inventory} /></p>
-          <p id="updateForm1">Supplier(must be 1-3): <input type="text" name="supplier_id" defaultValue={props.product.supplier_id} /></p>
-        <button type="submit">Update Production Information</button>
-      </form> */}
       <br />
       <br />
       <br />
