@@ -30,7 +30,26 @@ footer {
   background-color: red;
 }
 
+/* Show Product Modal */
 .showProductCardImage {
   width: 10%;
   height: 10%;
+}
+
+.updateProductCard {
+  padding: 0%;
+}
+
+.updateProductCard {
+  margin-bottom: 0%;
+}
+
+#updateForm1 {
+  margin-top: -2%;
+  line-height: 0%;
+}
+
+.showProductInfo,
+p {
+  margin-top: -2%;
 }

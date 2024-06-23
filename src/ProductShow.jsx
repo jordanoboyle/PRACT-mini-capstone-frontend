@@ -1,7 +1,9 @@
 import axios from "axios"
+import { useState } from "react";
+
 
 export function ProductShow(props) {
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
@@ -23,9 +25,35 @@ export function ProductShow(props) {
     })
     window.location.href = "/"
   }
+  const ShowUpdateForm = () => {
+    var showMe = true
+    let changingRender;
+    if (showMe) {
+      changingRender =
+      <form onSubmit={handleSubmit} className="updateProductCard">
+      <div>UPDATE PRODUCT INFORMATION BELOW</div>
+      <br />
+        <p id="updateForm1">Product Name: <input type="text" name="name" defaultValue={props.product.name} /></p>
+        <p id="updateForm1">Description: <input type="text" name="description" defaultValue={props.product.description} /></p>
+        <p id="updateForm1">Price: <input type="text" name="price" defaultValue={props.product.price} /></p>
+        <p id="updateForm1">Inventory: <input type="text" name="inventory" defaultValue={props.product.inventory} /></p>
+        <p id="updateForm1">Supplier(must be 1-3): <input type="text" name="supplier_id" defaultValue={props.product.supplier_id} /></p>
+      <button type="submit">Update Production Information</button>
+    </form>
+    } else {
+      changingRender = <h1>This is working if we change statusElement from 1 to any other value and this renders</h1>;
+    }
+    return (
+      <div>
+        {changingRender}
+      </div>
+    )
+  }
+
+
   return (
     <div>
-      <h1 ><b>Further Product Info:</b></h1>
+      <h1 className="showProductInfo"><b>Further Product Info:</b></h1>
       <p>{props.product.id}</p>
       <img className="showProductCardImage" src={props.product.images[1].url} />
       <p>Name: {props.product.name}</p>
@@ -33,9 +61,9 @@ export function ProductShow(props) {
       <p>Price:{props.product.price} </p>
       <p>Number Remaining: {props.product.inventory} </p>
       <p>Supplier: {props.product.supplier.name}</p>
-      <h1>Tags</h1>
+      <h2>Tags</h2>
         {props.product.categories.map(category => (
-          <div> 
+          <div key={category.id}> 
             <p>{category.name}</p>
           </div>
         ))}
@@ -48,27 +76,18 @@ export function ProductShow(props) {
         <button type="submit">Submit product to cart</button>
       </form>
       <hr/>
-      <form onSubmit={handleSubmit}>
+      <button onClick={ShowUpdateForm}>Click</button>
+      < ShowUpdateForm/>
+      {/* <form onSubmit={handleSubmit} className="updateProductCard">
         <div>UPDATE PRODUCT INFORMATION BELOW</div>
         <br />
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input type="text" name="name" defaultValue={props.product.name} />
-        </div>
-        <div>
-          Description: <input type="text" name="description" defaultValue={props.product.description} />
-        </div>
-        <div>
-          Price: <input type="text" name="price" defaultValue={props.product.price} />
-        </div>
-        <div>
-          Inventory: <input type="text" name="inventory" defaultValue={props.product.inventory} />
-        </div>
-        <div>
-          Supplier(must be 1-3): <input type="text" name="supplier_id" defaultValue={props.product.supplier_id} />
-        </div>
+          <p id="updateForm1">Product Name: <input type="text" name="name" defaultValue={props.product.name} /></p>
+          <p id="updateForm1">Description: <input type="text" name="description" defaultValue={props.product.description} /></p>
+          <p id="updateForm1">Price: <input type="text" name="price" defaultValue={props.product.price} /></p>
+          <p id="updateForm1">Inventory: <input type="text" name="inventory" defaultValue={props.product.inventory} /></p>
+          <p id="updateForm1">Supplier(must be 1-3): <input type="text" name="supplier_id" defaultValue={props.product.supplier_id} /></p>
         <button type="submit">Update Production Information</button>
-      </form>
+      </form> */}
       <br />
       <br />
       <br />

@@ -93,7 +93,6 @@ export function Content() {
       <LogoutLink />
       <button id="BRB">BIG RED BUTTON </button>
       <Modal show={isProductShowVisible} onClose={handleClose}>
-        <h1>THE MODAL</h1>
         <ProductShow product={currentProduct} onUpdateProduct={handleUpdateProduct} onDestroyProduct={handleDestroyProduct}/>
       </Modal>
     </main>
