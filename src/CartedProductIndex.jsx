@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 
 export function CartedProductIndex() {
-  const [cartedProducts, setCartedProducts] = useState({})
+  const [cartedProducts, setCartedProducts] = useState([])
   //make sure that carted products index renders in httpie
   // on button
   //get a function showing a console log when the page is clicked. 
@@ -33,7 +33,6 @@ export function CartedProductIndex() {
           <p>ID: {cp.id}</p>
         </div>
       ))}
-      
     </div>
   );
 }
