@@ -14,6 +14,20 @@ export function ProductsIndex(props) {
             <p>Description: {product.description}</p>
             <button onClick={() => props.onShowProduct(product)}> Further Information</button>
           </div>
+          
+      ))}
+      </div>
+      <div class="row">
+        {props.products.map(product => (
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{product.name}</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
       ))}
       </div>
 
