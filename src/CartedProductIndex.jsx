@@ -11,15 +11,17 @@ export function CartedProductIndex() {
   // rendering...product name(from product), product price(from product), product image?, quantity
 
 
-  const getCartedProducts = (event) => {
-    event.preventDefault();  
+  const getCartedProducts = () => {
     console.log("getting users' products");
     axios.get("http://localhost:3000/carted_products.json").then(response => {
       console.log(response.data);
       setCartedProducts(response.data);
     })
   }
-    // useEffect(getCartedProducts, [])
+  const updateQuantityCartedProducts = () => {
+    console.log("changing quantity")
+  }
+    useEffect(getCartedProducts, [])
   
   return (
     <div>
@@ -27,10 +29,18 @@ export function CartedProductIndex() {
       <br/>
       <br/>
       <br/>
-      <button onClick={getCartedProducts}>This is from Carted products.</button>
       {cartedProducts.map(cp => (
-        <div>
-          <p>ID: {cp.id}</p>
+        <div key={cp.id}>
+          <p>{cp.id} </p>
+          <p>{cp.product.name}</p>
+          <p>{cp.product.description}</p>
+          <p>{cp.product.price}</p>
+          <div>
+            <form onSubmit={updateQuantityCartedProducts}>
+              <p>Quantity: <input type="text" name="quantity" defaultValue={cp.quantity}/> <button type="submit">Update Quantity</button> </p>
+            </form >
+          </div>
+          <hr/>
         </div>
       ))}
     </div>
