@@ -17,14 +17,15 @@ export function ProductsIndex(props) {
           
       ))}
       </div>
-      <div class="row">
+      <div className="row">
         {props.products.map(product => (
-        <div class="col-sm-6 mb-3 mb-sm-0">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{product.name}</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div className="col-sm-4 mb-3 mb-sm-0" key={product.id}>
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">{product.name}</h5>
+              <img src={product.images[0] ? product.images[0].url : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"} alt="Image doest not exist" />
+              <p className="card-text">{product.description}</p>
+              <a href="#" className="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>
