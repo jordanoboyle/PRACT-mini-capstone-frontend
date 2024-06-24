@@ -1,4 +1,4 @@
-#products-index {
+/* #products-index {
   width: 300px;
 }
 
@@ -28,9 +28,9 @@ footer {
 #BRB {
   color: white;
   background-color: red;
-}
+} */
 
-/* Show Product Modal */
+/* Show Product Modal
 .showProductCardImage {
   position: right;
   float: right;
@@ -59,4 +59,4 @@ footer {
 .showProductInfo p {
   margin-top: -1%;
 
-}
+} */

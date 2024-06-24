@@ -77,12 +77,6 @@ export function Content() {
 
   return (
     <main>
-      <div>
-        <a href="/login">Login</a> | <a href="/signup">Not member? Sign-Up Here</a>
-        <br/>
-        <a href="/cart" >User Cart</a>
-        
-      </div>
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
@@ -90,7 +84,6 @@ export function Content() {
         <Route path="/" element={<ProductsIndex  products={products} onShowProduct={handleShowProduct}/>} />
         <Route path="/cart" element={<CartedProductIndex />} />
       </Routes>
-      <LogoutLink />
       <button id="BRB">BIG RED BUTTON </button>
       <Modal show={isProductShowVisible} onClose={handleClose}>
         <ProductShow product={currentProduct} onUpdateProduct={handleUpdateProduct} onDestroyProduct={handleDestroyProduct}/>
