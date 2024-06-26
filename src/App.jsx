@@ -1,18 +1,20 @@
 import { Content } from "./Content";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { UserContext }
+import { UserContext } from "./UserContext";
 import { BrowserRouter } from "react-router-dom";
 
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Header />
-        <Content />
-        <Footer />
-      </BrowserRouter>
+      <UserContext.Provider value={{name: "John"}}>
+        <BrowserRouter>
+          <Header />
+          <Content />
+          <Footer />
+        </BrowserRouter>
+      </UserContext.Provider>
     </div>
   );
 }

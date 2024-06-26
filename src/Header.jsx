@@ -1,6 +1,15 @@
 import { LogoutLink } from "./LogoutLink";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 
 export function Header() {
+  
+  const Headline = () => {
+    const user = useContext(UserContext);
+    return (
+      <p>Greetings {user && user.name ? user.name : 'Anonymous'}</p>
+    )
+  }
   return (
     <header>
       {/* <a href="/">Check Out Products</a> | <a href="/createNew_product">Post New Stuff</a> */}
@@ -33,6 +42,7 @@ export function Header() {
                 </ul>
               </li>
             </ul>
+            <Headline/>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
