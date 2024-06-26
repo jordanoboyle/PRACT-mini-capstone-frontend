@@ -1,4 +1,5 @@
 import axios from "axios"
+import { Modal } from "./Modal";
 
 export function ProductsIndex(props) {
   
@@ -13,7 +14,7 @@ export function ProductsIndex(props) {
               <h5 className="card-title">{product.name}</h5>
               <img height="300px" width="300px" src={product.images[0] ? product.images[0].url : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"} alt="Image doest not exist" />
               <p className="card-text">{product.description}</p>
-              <a href="#" className="btn btn-primary">Go somewhere</a>
+              <button onClick={() => props.onShowProduct(product)} className="btn btn-primary"> More Info</button>
             </div>
           </div>
         </div>

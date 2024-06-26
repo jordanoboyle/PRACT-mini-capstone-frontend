@@ -88,6 +88,7 @@ export function Content() {
       <Modal show={isProductShowVisible} onClose={handleClose}>
         <ProductShow product={currentProduct} onUpdateProduct={handleUpdateProduct} onDestroyProduct={handleDestroyProduct}/>
       </Modal>
+
     </main>
   );
 }

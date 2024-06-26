@@ -26,7 +26,7 @@ export function ProductShow(props) {
     window.location.href = "/"
   }
   const ShowUpdateForm = () => {
-    var showMe = true
+    var showMe = false
     let changingRender;
     if (showMe) {
       changingRender =
@@ -41,7 +41,7 @@ export function ProductShow(props) {
         <button type="submit">Update Production Information</button>
       </form>
     } else {
-      changingRender = <h1>This is working if we change statusElement from 1 to any other value and this renders</h1>;
+      changingRender = <h1>This is working if we change showMe to false</h1>;
     }
     return (
       <div>
@@ -53,10 +53,11 @@ export function ProductShow(props) {
 
   return (
     <div>
+      <h1>Hello from the modal</h1>
       <div className="showProductInfo">
         <h1><b>Further Product Info:</b></h1>
         <p>{props.product.id}</p>
-        <img className="showProductCardImage" src={props.product.images[1].url} />
+        <img className="showProductCardImage" width="300px" height="300px" src={props.product.images[1].url} />
         <p>Name: {props.product.name}</p>
         <p>Description: {props.product.description}</p>
         <p>Price:{props.product.price} </p>
