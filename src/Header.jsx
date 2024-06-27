@@ -1,13 +1,11 @@
 import { LogoutLink } from "./LogoutLink";
 import { useContext } from "react";
-import { UserContext } from "./UserContext";
 
 export function Header() {
   
   const Headline = () => {
-    const user = useContext(UserContext);
     return (
-      <p>Greetings {user && user.name ? user.name : 'Anonymous'}</p>
+      <p>Greetings </p>
     )
   }
   return (

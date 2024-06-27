@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useContext } from "react";
 
 const jwt = localStorage.getItem("jwt");  //Localstorage is a "component" of browser JS. stores login information
 if (jwt) {
@@ -43,6 +44,9 @@ export function Login() {
         <div>
           Password: <input name="password" type="password" />
         </div>
+        <p>
+        Greetings, {user && user.name ? `welcome back ${user.name}` : "please sign in."}
+        </p>
         <button type="submit">Login</button>
       </form>
     </div>
