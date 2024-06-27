@@ -27,13 +27,14 @@ export function ProductShow(props) {
     })
     window.location.href = "/"
   }
+
   const ShowUpdateForm = () => {
     const { user } = useContext(UserContext);
     const isLoggedIn = !!user;
-    // var showMe = false
-    let changingRender;
+    // var showMe = false   ==> This existed to test the form render
+    let conditionalUpdateForm;
     if (isLoggedIn) {
-      changingRender =
+      conditionalUpdateForm =
       <form onSubmit={handleSubmit} className="updateProductCard">
         <div>UPDATE PRODUCT INFORMATION BELOW</div>
           <br />
@@ -45,13 +46,36 @@ export function ProductShow(props) {
         <button type="submit">Update Production Information</button>
       </form>
     } else {
-      changingRender = <h1>This is working if we change showMe to false</h1>;
+      conditionalUpdateForm = <h1>Restricted Acces</h1>;
     }
     return (
       <div>
-        {changingRender}
+        {conditionalUpdateForm}
       </div>
     )
+  }
+  const ShowDeleteButton = () => {
+    // const { user } = useContext(UserContext);
+    // const isLoggedIn = !!user
+    const showMe = false
+    let conditionalDeleteButton;
+    if (showMe) {
+      conditionalDeleteButton =
+      <div>
+        <button onClick={handleDeleteProduct}>Remove Product</button>
+      </div>
+    } else {
+      conditionalDeleteButton =
+      <div>
+        <h1>We hope you are having a nice day! (Let's add a go to cart button here)</h1> 
+      </div>
+    }
+    return (
+      <div>
+        {conditionalDeleteButton}
+      </div>
+    )
+
   }
 
 
@@ -83,9 +107,10 @@ export function ProductShow(props) {
         <button type="submit">Submit product to cart</button>
       </form>
       <hr/>
-      < ShowUpdateForm/>
+      < ShowUpdateForm />
       <br />
       <br />
+      < ShowDeleteButton />
       <br />
       <button onClick={handleDeleteProduct}>Remove Product</button>
     </div>
