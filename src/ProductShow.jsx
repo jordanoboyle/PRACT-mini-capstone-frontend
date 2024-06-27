@@ -1,5 +1,7 @@
 import axios from "axios"
 import { useState } from "react";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
 
 export function ProductShow(props) {
@@ -26,9 +28,11 @@ export function ProductShow(props) {
     window.location.href = "/"
   }
   const ShowUpdateForm = () => {
-    var showMe = false
+    const { user } = useContext(UserContext);
+    const isLoggedIn = !!user;
+    // var showMe = false
     let changingRender;
-    if (showMe) {
+    if (isLoggedIn) {
       changingRender =
       <form onSubmit={handleSubmit} className="updateProductCard">
         <div>UPDATE PRODUCT INFORMATION BELOW</div>

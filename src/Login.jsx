@@ -44,9 +44,6 @@ export function Login() {
         <div>
           Password: <input name="password" type="password" />
         </div>
-        <p>
-        Greetings, {user && user.name ? `welcome back ${user.name}` : "please sign in."}
-        </p>
         <button type="submit">Login</button>
       </form>
     </div>
