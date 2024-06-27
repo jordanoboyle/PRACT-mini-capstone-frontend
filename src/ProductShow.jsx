@@ -85,7 +85,7 @@ export function ProductShow(props) {
       <div className="showProductInfo">
         <h1><b>Further Product Info:</b></h1>
         <p>{props.product.id}</p>
-        <img className="showProductCardImage" width="300px" height="300px" src={props.product.images[1].url} />
+        <img className="showProductCardImage" width="300px" height="300px" src={props.product.images[1] ? props.product.images[1].url : "https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ="} />
         <p>Name: {props.product.name}</p>
         <p>Description: {props.product.description}</p>
         <p>Price:{props.product.price} </p>
