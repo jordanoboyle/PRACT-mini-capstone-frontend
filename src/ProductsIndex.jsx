@@ -1,11 +1,13 @@
 import axios from "axios"
 import { Modal } from "./Modal";
+import { useState } from "react";
 
 export function ProductsIndex(props) {
-  
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <div>
       <h1> Our Curated Collection </h1>
+      <p>Search: <input  type="text" placeholder="Search by title..."/></p>
       <div className="row">
         {props.products.map(product => (
         <div className="col-sm-3 mb-3 mb-sm-0" key={product.id}>
