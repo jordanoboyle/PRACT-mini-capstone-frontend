@@ -3,6 +3,8 @@ import { useState } from "react";
 
 export function Signup() {
   const [errors, setErrors] = useState([]);
+  const [name, setName]     = useState("")
+  const [pw, setPw]         = useState("")
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,16 +33,26 @@ export function Signup() {
       </ul>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input name="name" type="text" maxLength={20}/>
+        {/* maxLength={20} */}
+          Name: <input 
+          name="name" 
+          type="text" 
+          value={name} 
+          onChange={event => setName(event.target.value)} 
+          maxLength={20}/>
+          <small>{20 - name.length} characters remaining</small> {/* you have to add "maxLength" directly*/}
+          <p>{name}</p> {/* REMOVE THIS AFTER TESTING*/}
         </div>
         <div>
           Email: <input name="email" type="email" />
         </div>
         <div>
-          Password: <input name="password" type="password" />
+          Password: <input name="password" type="password" minLength={8} value={pw} onChange={event => setPw(event.target.value)} />
+          <small>Characters needed: {8 - pw.length }</small>
+          <p>{pw}</p>
         </div>
         <div>
-          Password confirmation: <input name="password_confirmation" type="password" />
+          Password confirmation: <input name="password_confirmation" type="password"/> {/* implement must be same?*/}
         </div>
         <button type="submit">Signup</button>
       </form>

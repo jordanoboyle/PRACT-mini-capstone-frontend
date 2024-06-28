@@ -4,12 +4,33 @@ import { useContext } from "react";
 export function Header() {
   
   const Headline = () => {
+    let isLoggedIn;
+
+    if (localStorage.jwt) {
+      console.log("A USER IS LOGGED IN")
+      isLoggedIn = (
+        <div>
+          <p>Hello person that is logged in at the moment, no idea who you are!!</p>
+          <p>THIS IS FOR TESTING PURPOSES...TO BE REMOVES</p>
+        </div>
+      )
+    } else {
+      console.log("USER NOT LOGGED IN")
+      isLoggedIn = (
+        <div>
+          <p>Hello new person that is not logged in....please log in so I can not know who you are!!</p>
+          <p>THIS IS FOR TESTING PURPOSES...TO BE REMOVES</p>
+        </div>
+      )
+    }
     return (
-      <p>Greetings </p>
+      isLoggedIn  
+      // you do not need the curly braces here if you are rendering from a "function within a REACT export"
     )
   }
   return (
     <header>
+      <Headline/>
       {/* <a href="/">Check Out Products</a> | <a href="/createNew_product">Post New Stuff</a> */}
       {/* <a href="/login">Login</a> | <a href="/signup">Not member? Sign-Up Here</a> */}
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -40,7 +61,6 @@ export function Header() {
                 </ul>
               </li>
             </ul>
-            <Headline/>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
