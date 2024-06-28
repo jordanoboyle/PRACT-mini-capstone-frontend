@@ -11,9 +11,14 @@ export function ProductsIndex(props) {
       type="text" 
       placeholder="Search by title..." 
       value={searchTerm} onChange={event => setSearchTerm(event.target.value)} 
-      list="product names"/></p>
-      <datalist id="product names">
+      list="names"/></p>
+      {/* <datalist id="product names">
         <option>hoody</option>
+      </datalist> */}
+      <datalist id="names">
+      {props.products.map(product => 
+          <option key={product.id}>{product.name}</option>
+        )}
       </datalist>
       <div className="row">
         {props.products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase())).map(product => (
