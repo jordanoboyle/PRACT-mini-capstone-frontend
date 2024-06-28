@@ -18,8 +18,24 @@ export function CartedProductIndex() {
       setCartedProducts(response.data);
     })
   }
-  const updateQuantityCartedProducts = () => {
-    console.log("changing quantity")
+
+  const purchaseCartedProducts = () => {
+    console.log("buying the carted products")
+  }
+
+  const updateQuantityCartedProducts = (event) => {
+    event.preventDefault();
+    console.log("changing quantity");
+    const form = event.target;
+    const params = new FormData(form);
+    const cpID = form.getAttribute('id')
+    axios.patch(`http://localhost:3000/carted_products/29.json`, params).then((response) =>{
+      console.log(response.data);
+      window.location.href = "/cart"
+    })
+    .catch((error) => {
+      console.error("There was an error updating quantity", error)
+    })
   }
     useEffect(getCartedProducts, [])
   
@@ -32,13 +48,17 @@ export function CartedProductIndex() {
       {cartedProducts.map(cp => (
         <div key={cp.id}>
           <p>{cp.id} </p>
+          <img height="300px" width="300px" src={cp.images[0].url} ></img>
           <p>{cp.product.name}</p>
           <p>{cp.product.description}</p>
           <p>{cp.product.price}</p>
           <div>
             <form onSubmit={updateQuantityCartedProducts}>
+              
               <p>Quantity: <input type="text" name="quantity" defaultValue={cp.quantity}/> <button type="submit">Update Quantity</button> </p>
             </form >
+            <br/>
+            <button onClick={purchaseCartedProducts}>Purchase Cart</button>
           </div>
           <hr/>
         </div>

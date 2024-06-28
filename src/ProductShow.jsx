@@ -30,7 +30,7 @@ export function ProductShow(props) {
 
   const ShowUpdateForm = () => {
     const { user } = useContext(UserContext);
-    const isLoggedIn = !!user;
+    const isLoggedIn = !!user && user.admin;
     // var showMe = false   ==> This existed to test the form render
     let conditionalUpdateForm;
     if (isLoggedIn) {
@@ -46,7 +46,7 @@ export function ProductShow(props) {
         <button type="submit">Update Production Information</button>
       </form>
     } else {
-      conditionalUpdateForm = <h1>Restricted Acces</h1>;
+      conditionalUpdateForm = <h1>Restricted Access</h1>;
     }
     return (
       <div>
@@ -55,11 +55,11 @@ export function ProductShow(props) {
     )
   }
   const ShowDeleteButton = () => {
-    // const { user } = useContext(UserContext);
-    // const isLoggedIn = !!user
-    const showMe = false
+    const { user } = useContext(UserContext);
+    const isLoggedIn = !!user && user.admin 
+    // const showMe = false
     let conditionalDeleteButton;
-    if (showMe) {
+    if (isLoggedIn) {
       conditionalDeleteButton =
       <div>
         <button onClick={handleDeleteProduct}>Remove Product</button>
