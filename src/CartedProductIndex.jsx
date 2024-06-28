@@ -22,14 +22,15 @@ export function CartedProductIndex() {
   const purchaseCartedProducts = () => {
     console.log("buying the carted products")
   }
+  
 //here we are updating the product amount
   const updateQuantityCartedProducts = (event) => {
     event.preventDefault();
     console.log("changing quantity");
-    const form = event.target;
-    const params = new FormData(form);
-    const cpID = form.getAttribute('id')
-    axios.patch(`http://localhost:3000/carted_products/29.json`, params).then((response) =>{
+    const form   = event.target
+    const params = new FormData(form)
+    const cpID   = params.get("id")
+    axios.patch(`http://localhost:3000/carted_products/${cpID}.json`, params).then((response) =>{
       console.log(response.data);
       window.location.href = "/cart"
     })
@@ -54,7 +55,7 @@ export function CartedProductIndex() {
           <p>{cp.product.price}</p>
           <div>
             <form onSubmit={updateQuantityCartedProducts}>
-              
+              <p>Is this hidden?<input name="id" value={cp.id} type="hidden" /></p>
               <p>Quantity: <input type="text" name="quantity" defaultValue={cp.quantity}/> <button type="submit">Update Quantity</button> </p>
             </form >
             <br/>
