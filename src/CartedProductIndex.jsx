@@ -22,7 +22,7 @@ export function CartedProductIndex() {
   const purchaseCartedProducts = () => {
     console.log("buying the carted products")
   }
-
+//here we are updating the product amount
   const updateQuantityCartedProducts = (event) => {
     event.preventDefault();
     console.log("changing quantity");
