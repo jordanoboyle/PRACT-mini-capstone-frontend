@@ -1,11 +1,12 @@
 import axios from "axios"
 import { useState } from "react";
-import { UserContext } from "./UserContext";
-import { useContext } from "react";
+
 
 
 export function ProductShow(props) {
-  
+  const { user }  = useContext(UserContext)
+  console.log("testing user context", user)
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
@@ -29,8 +30,7 @@ export function ProductShow(props) {
   }
 
   const ShowUpdateForm = () => {
-    const { user } = useContext(UserContext);
-    const isLoggedIn = !!user && user.admin;
+    const isLoggedIn = true   //adjustment until I can build the workaround
     // var showMe = false   ==> This existed to test the form render
     let conditionalUpdateForm;
     if (isLoggedIn) {
@@ -55,8 +55,7 @@ export function ProductShow(props) {
     )
   }
   const ShowDeleteButton = () => {
-    const { user } = useContext(UserContext);
-    const isLoggedIn = !!user && user.admin 
+    const isLoggedIn = true   //adjustment until I can build the workaround
     // const showMe = false
     let conditionalDeleteButton;
     if (isLoggedIn) {
@@ -112,7 +111,7 @@ export function ProductShow(props) {
       <br />
       < ShowDeleteButton />
       <br />
-      <button onClick={handleDeleteProduct}>Remove Product</button>
+      {/* <button onClick={handleDeleteProduct}>Remove Product</button> */}
     </div>
   )
 }

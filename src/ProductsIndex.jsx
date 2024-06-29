@@ -1,8 +1,14 @@
 import axios from "axios"
 import { Modal } from "./Modal";
 import { useState } from "react";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
 export function ProductsIndex(props) {
+  const user = useContext(UserContext)
+  console.log("testing UserContext", user)
+  console.log(user.currentUser)
+  
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <div>
