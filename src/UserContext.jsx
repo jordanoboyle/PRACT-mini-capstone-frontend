@@ -14,7 +14,7 @@ const UserProvider = ({children}) => {
       setJWT(storedJWT);
       axios.defaults.headers.common["Authorization"] = `Bearer ${storedJWT}`;
 
-      axios.get("/user-info")
+      axios.get("http://localhost:3000/user-info.json")
       .then(response => {
         setCurrentUser(response.data)
       })

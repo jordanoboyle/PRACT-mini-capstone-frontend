@@ -9,12 +9,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal } from "./Modal";
 import { Route, Routes } from "react-router-dom";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
 export function Content() {
 
   const [products, setProducts] = useState([]);
   const [isProductShowVisible, setIsProductShowVisible] = useState(false);  
   const [currentProduct, setCurrentProduct] = useState({});
+
+  //USER Context
+  const { currentUser } = useContext(UserContext) 
 
   const handleIndexProducts = () => {
     console.log("handling the products!");
@@ -86,7 +91,7 @@ export function Content() {
       </Routes>
       <button id="BRB">BIG RED BUTTON </button>
       <Modal show={isProductShowVisible} onClose={handleClose}>
-        <ProductShow product={currentProduct} onUpdateProduct={handleUpdateProduct} onDestroyProduct={handleDestroyProduct}/>
+        <ProductShow product={currentProduct} onUpdateProduct={handleUpdateProduct} onDestroyProduct={handleDestroyProduct} currentUser={currentUser}/>
       </Modal>
 
     </main>

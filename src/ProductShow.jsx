@@ -4,8 +4,8 @@ import { useState } from "react";
 
 
 export function ProductShow(props) {
-  const { user }  = useContext(UserContext)
-  console.log("testing user context", user)
+  const currentUser = props.currentUser
+  console.log("testing user from ProductShow", currentUser)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,11 +30,9 @@ export function ProductShow(props) {
   }
 
   const ShowUpdateForm = () => {
-    const isLoggedIn = true   //adjustment until I can build the workaround
-    // var showMe = false   ==> This existed to test the form render
-    let conditionalUpdateForm;
+    const isLoggedIn = !!currentUser && currentUser.admin   //adjustment until I can build the workaround
     if (isLoggedIn) {
-      conditionalUpdateForm =
+      return(
       <form onSubmit={handleSubmit} className="updateProductCard">
         <div>UPDATE PRODUCT INFORMATION BELOW</div>
           <br />
@@ -45,36 +43,31 @@ export function ProductShow(props) {
           <p id="updateForm1">Supplier(must be 1-3): <input type="text" name="supplier_id" defaultValue={props.product.supplier_id} /></p>
         <button type="submit">Update Production Information</button>
       </form>
+      )
     } else {
-      conditionalUpdateForm = <h1>Restricted Access</h1>;
+      return( 
+        <h1>Restricted Access</h1>
+      ) 
     }
-    return (
-      <div>
-        {conditionalUpdateForm}
-      </div>
-    )
   }
+
   const ShowDeleteButton = () => {
-    const isLoggedIn = true   //adjustment until I can build the workaround
-    // const showMe = false
-    let conditionalDeleteButton;
+    const isLoggedIn = !!currentUser && currentUser.admin  
     if (isLoggedIn) {
-      conditionalDeleteButton =
+      console.log("Current user authorized as admin")
+      return(
       <div>
         <button onClick={handleDeleteProduct}>Remove Product</button>
       </div>
+      )
     } else {
-      conditionalDeleteButton =
+      console.log("Current user unauthorized as admin")
+      return(
       <div>
         <h1>We hope you are having a nice day! (Let's add a go to cart button here)</h1> 
       </div>
+      )
     }
-    return (
-      <div>
-        {conditionalDeleteButton}
-      </div>
-    )
-
   }
 
 
@@ -100,10 +93,10 @@ export function ProductShow(props) {
       <hr/>
       <form onSubmit={cartProduct}>
         <div>
-          <p>Quantity Desired: <input type="text" name="quantity" /></p>
-          <p> <input type="hidden" name="product_id" defaultValue={props.product.id} /> </p>
+          <p>Quantity Desired: <input type="text" name="quantity" /><button type="submit">Submit product to cart</button></p>
+          <p> <input type="hidden" name="product_id" defaultValue={props.product.id} /> </p> 
         </div>
-        <button type="submit">Submit product to cart</button>
+         <button>Proceed to Cart</button>
       </form>
       <hr/>
       < ShowUpdateForm />
@@ -111,7 +104,6 @@ export function ProductShow(props) {
       <br />
       < ShowDeleteButton />
       <br />
-      {/* <button onClick={handleDeleteProduct}>Remove Product</button> */}
     </div>
   )
 }

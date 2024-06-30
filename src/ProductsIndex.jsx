@@ -5,9 +5,9 @@ import { UserContext } from "./UserContext";
 import { useContext } from "react";
 
 export function ProductsIndex(props) {
-  const user = useContext(UserContext)
-  console.log("testing UserContext", user)
-  console.log(user.currentUser)
+  const currentU = useContext(UserContext)
+  console.log("testing currentUser from USERContecxt in ProductIndex", currentU)
+  console.log(currentU)
   
   const [searchTerm, setSearchTerm] = useState("");
   return (
@@ -23,7 +23,8 @@ export function ProductsIndex(props) {
       </datalist> */}
       <datalist id="names">
       {props.products.map(product => 
-          <option key={product.id}>{product.name}</option>
+          <option key={product.id}>{product.name}{product.category}</option>
+          // <option>{product.category}</option>
         )}
       </datalist>
       <div className="row">
